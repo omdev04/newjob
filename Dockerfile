@@ -42,4 +42,4 @@ RUN mkdir -p /run/nginx
 EXPOSE 80
 
 # Start Nginx & PHP-FPM
-CMD ["sh", "-c", "php-fpm -D && nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "rm -f /var/www/bootstrap/cache/*.php && php-fpm -D && nginx -g 'daemon off;'"]
