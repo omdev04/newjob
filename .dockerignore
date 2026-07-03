@@ -1,0 +1,12 @@
+.git
+.github
+vendor/
+node_modules/
+bootstrap/cache/*.php
+.env
+.idea
+.vscode
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
