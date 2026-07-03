@@ -26,6 +26,26 @@ Route::group(
 
 //Front routes end
 
+//Subdomain Front routes start
+$domain = env('APP_URL_BASE');
+if ($domain) {
+    Route::domain('{subdomain}.'.$domain)->group(function () {
+        Route::group(
+            ['namespace' => 'Front', 'as' => 'jobs.'],
+            function () {
+                Route::get('/', 'FrontJobsController@subdomainJobOpenings')->name('subdomainJobOpenings');
+                Route::get('/job/{slug}', 'FrontJobsController@subdomainJobDetail')->name('subdomainJobDetail');
+                Route::get('/job/{slug}/apply', 'FrontJobsController@subdomainJobApply')->name('subdomainJobApply');
+                Route::post('/job/saveApplication', 'FrontJobsController@subdomainSaveApplication')->name('subdomainSaveApplication');
+                Route::post('/job/fetch-country-state', 'FrontJobsController@subdomainFetchCountryState')->name('subdomainFetchCountryState');
+                Route::get('auth/callback/{provider}', 'FrontJobsController@subdomainCallback')->name('subdomainLinkedinCallback');
+                Route::get('auth/redirect/{provider}', 'FrontJobsController@subdomainRedirect')->name('subdomainLinkedinRedirect');
+            }
+        );
+    });
+}
+//Subdomain Front routes end
+
 //Front routes start
 Route::group(
     ['namespace' => 'Front', 'as' => 'jobs.'],

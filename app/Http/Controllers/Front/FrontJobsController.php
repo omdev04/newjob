@@ -47,6 +47,41 @@ class FrontJobsController extends FrontBaseController
         }
     }
 
+    public function subdomainJobOpenings($subdomain)
+    {
+        return $this->jobOpenings($subdomain);
+    }
+
+    public function subdomainJobDetail($subdomain, $slug)
+    {
+        return $this->jobDetail($subdomain, $slug);
+    }
+
+    public function subdomainJobApply($subdomain, $slug)
+    {
+        return $this->jobApply($subdomain, $slug);
+    }
+
+    public function subdomainSaveApplication($subdomain, FrontJobApplication $request)
+    {
+        return $this->saveApplication($request);
+    }
+
+    public function subdomainFetchCountryState($subdomain, Request $request)
+    {
+        return $this->fetchCountryState($request);
+    }
+
+    public function subdomainCallback($subdomain, $provider, Request $request)
+    {
+        return $this->callback($provider, $request);
+    }
+
+    public function subdomainRedirect($subdomain, $provider)
+    {
+        return $this->redirect($provider);
+    }
+
     public function jobOpenings($slug)
     {
         $company = Company::withoutGlobalScope('company')->where('career_page_link', $slug)->first();
