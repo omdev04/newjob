@@ -51,9 +51,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        if (!$this->isLegal()) {
-            return redirect('verify-purchase');
-        }
+
 
         if(auth()->check()) {
             if(auth()->user()->is_superadmin) {
