@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (env('REDIRECT_HTTPS')) {
+        if (env('REDIRECT_HTTPS') || config('app.env') === 'production' || strpos(config('app.url'), 'https') === 0 || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' || true) {
             \URL::forceScheme('https');
         }
         Schema::defaultStringLength(191);
