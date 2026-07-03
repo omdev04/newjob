@@ -27,7 +27,7 @@ Route::group(
 //Front routes end
 
 //Subdomain Front routes start
-$domain = env('APP_URL_BASE');
+$domain = parse_url(config('app.url'), PHP_URL_HOST);
 if ($domain) {
     Route::domain('{subdomain}.'.$domain)->group(function () {
         Route::group(
