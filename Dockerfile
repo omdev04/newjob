@@ -30,8 +30,12 @@ COPY . /var/www
 # Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+# Set permissions and create .env
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache \
+    && touch /var/www/.env \
+    && chown www-data:www-data /var/www/.env \
+    && chmod 775 /var/www/.env
 
 # Setup Nginx
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
@@ -42,4 +46,4 @@ RUN mkdir -p /run/nginx
 EXPOSE 80
 
 # Start Nginx & PHP-FPM
-CMD ["sh", "-c", "rm -f /var/www/bootstrap/cache/*.php && touch /var/www/.env && php-fpm -D && nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "rm -f /var/www/bootstrap/cache/*.php && php-fpm -D && nginx -g 'daemon off;'"]
