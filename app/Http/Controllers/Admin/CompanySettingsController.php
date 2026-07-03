@@ -58,11 +58,11 @@ class CompanySettingsController extends AdminBaseController
 
         $setting = Company::findOrFail($this->global->id);
 
-        if($this->superSettings->delete_account_hour_day = 'day' && !is_null($this->superSettings->delete_account_in) && $this->superSettings->delete_account_in > 0)
+        if($this->superSettings->delete_account_hour_day == 'day' && !is_null($this->superSettings->delete_account_in) && $this->superSettings->delete_account_in > 0)
         {
             $addableDate = Carbon::now()->addDays($this->superSettings->delete_account_in)->format('Y-m-d H:i');
         }
-        else if($this->superSettings->delete_account_hour_day = 'hour' && !is_null($this->superSettings->delete_account_in) && $this->superSettings->delete_account_in > 0)
+        else if($this->superSettings->delete_account_hour_day == 'hour' && !is_null($this->superSettings->delete_account_in) && $this->superSettings->delete_account_in > 0)
         {
             $addableDate = Carbon::now()->addHours($this->superSettings->delete_account_in)->format('Y-m-d H:i');
         }

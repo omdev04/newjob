@@ -36,8 +36,8 @@ class GlobalSettingController extends SuperAdminBaseController
         $setting->locale = $request->input('locale');
         $setting->google_recaptcha_key = $request->input('google_recaptcha_key');
         $setting->system_update = $request->has('system_update') && $request->input('system_update') == 'on' ? 1 : 0;;
-        $setting->delete_account_hour_day = $request->has('hoursDays');
-        $setting->delete_account_in = $request->has('delete_account_in');
+        $setting->delete_account_hour_day = $request->input('hoursDays');
+        $setting->delete_account_in = $request->input('delete_account_in');
 
         if ($request->hasFile('logo')) {
             Files::deleteFile($setting->logo,'global-logo');

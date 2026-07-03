@@ -18,6 +18,10 @@ RUN apk add --no-cache \
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
+# Configure custom PHP upload limits
+RUN echo "upload_max_filesize = 50M" > /usr/local/etc/php/conf.d/uploads.ini \
+    && echo "post_max_size = 50M" >> /usr/local/etc/php/conf.d/uploads.ini
+
 # Get Composer 2.2 (LTS for PHP 7.4)
 COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
 
@@ -31,8 +35,9 @@ COPY . /var/www
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Set permissions and create .env
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
-    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache \
+RUN mkdir -p /var/www/public/user-uploads \
+    && chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache /var/www/public/user-uploads \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache /var/www/public/user-uploads \
     && touch /var/www/.env \
     && chown www-data:www-data /var/www/.env \
     && chmod 775 /var/www/.env
