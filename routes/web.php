@@ -11,21 +11,6 @@
 |
 */
 
-//SAAS Front routes start
-Route::group(
-    ['namespace' => 'SaasFront'],
-    function () {
-        Route::get('/', 'SaasFrontController@index')->name('index');
-        Route::post('/', 'SaasFrontController@submitContact')->name('contact');
-        Route::post('/company-register', 'SaasFrontController@companyRegister')->name('company-register');
-        Route::get('/email-verification/{code}', 'SaasFrontController@getEmailVerification')->name('get-email-verification');
-        Route::post('change-language/{code}', 'SaasFrontController@changeLanguage')->name('changeLanguage');
-        Route::get('page/{slug?}', 'SaasFrontController@page')->name('page');
-    }
-);
-
-//Front routes end
-
 //Subdomain Front routes start
 $domain = parse_url(config('app.url'), PHP_URL_HOST);
 if ($domain) {
@@ -45,6 +30,23 @@ if ($domain) {
     });
 }
 //Subdomain Front routes end
+
+//SAAS Front routes start
+Route::group(
+    ['namespace' => 'SaasFront'],
+    function () {
+        Route::get('/', 'SaasFrontController@index')->name('index');
+        Route::post('/', 'SaasFrontController@submitContact')->name('contact');
+        Route::post('/company-register', 'SaasFrontController@companyRegister')->name('company-register');
+        Route::get('/email-verification/{code}', 'SaasFrontController@getEmailVerification')->name('get-email-verification');
+        Route::post('change-language/{code}', 'SaasFrontController@changeLanguage')->name('changeLanguage');
+        Route::get('page/{slug?}', 'SaasFrontController@page')->name('page');
+    }
+);
+
+//Front routes end
+
+
 
 //Front routes start
 Route::group(
