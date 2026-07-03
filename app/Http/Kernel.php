@@ -71,4 +71,17 @@ class Kernel extends HttpKernel
         'permission' => \Trebol\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Trebol\Entrust\Middleware\EntrustAbility::class,
     ];
+
+    protected function bootstrappers()
+    {
+        $bootstrappers = parent::bootstrappers();
+        
+        foreach ($bootstrappers as $key => $bootstrapper) {
+            if ($bootstrapper === \Illuminate\Foundation\Bootstrap\HandleExceptions::class) {
+                $bootstrappers[$key] = \App\Bootstrap\HandleExceptions::class;
+            }
+        }
+        
+        return $bootstrappers;
+    }
 }

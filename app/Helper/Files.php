@@ -39,6 +39,10 @@ class Files
             $result = \File::makeDirectory(public_path('user-uploads/' . $folder), 0775, true);
         }
 
+        if (!\File::exists(public_path('user-uploads/temp'))) {
+            \File::makeDirectory(public_path('user-uploads/temp'), 0775, true);
+        }
+
         $newPath = $folder . '/' . $newName;
 
         /** @var UploadedFile $uploadedFile */

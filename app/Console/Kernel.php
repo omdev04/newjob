@@ -44,4 +44,17 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    protected function bootstrappers()
+    {
+        $bootstrappers = parent::bootstrappers();
+        
+        foreach ($bootstrappers as $key => $bootstrapper) {
+            if ($bootstrapper === \Illuminate\Foundation\Bootstrap\HandleExceptions::class) {
+                $bootstrappers[$key] = \App\Bootstrap\HandleExceptions::class;
+            }
+        }
+        
+        return $bootstrappers;
+    }
 }
