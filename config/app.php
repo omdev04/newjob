@@ -168,7 +168,7 @@ return [
         Froiden\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
        Macellan\Zip\ZipServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        // Barryvdh\Debugbar\ServiceProvider::class,
         Froiden\RestAPI\Providers\ApiServiceProvider::class
 
 
