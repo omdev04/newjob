@@ -8,7 +8,8 @@ class GlobalSetting extends Model
 {
     protected $appends = [
         'logo_url',
-        'login_background_image_url'
+        'login_background_image_url',
+        'favicon_url'
     ];
 
     public function getLogoUrlAttribute()
@@ -17,6 +18,14 @@ class GlobalSetting extends Model
             return asset('app-logo.png');
         }
         return asset_url('global-logo/' . $this->logo);
+    }
+
+    public function getFaviconUrlAttribute()
+    {
+        if (is_null($this->favicon)) {
+            return asset('favicon/favicon-32x32.png');
+        }
+        return asset_url('favicon/' . $this->favicon);
     }
 
     public function currency() {

@@ -1,4 +1,878 @@
-/*! Place your custom styles here */
-.help-block{
-    color: brown;
+/*======================================================
+ * MASTERCARD DESIGN SYSTEM - CUSTOM CSS OVERRIDE
+ *======================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;500;700&display=swap');
+
+:root {
+    /* Mastercard Color Palette */
+    --mc-cream: #F3F0EE;
+    --mc-lifted-cream: #FCFBFA;
+    --mc-white: #FFFFFF;
+    --mc-ink: #141413;
+    --mc-charcoal: #262627;
+    --mc-signal-orange: #CF4500;
+    --mc-light-signal-orange: #F37338;
+    --mc-clay-brown: #9A3A0A;
+    --mc-slate-gray: #4A4A4A;
+    --mc-dust-taupe: #D1CDC7;
+    
+    /* Typography */
+    --mc-font-family: 'Sofia Sans', 'Inter', Arial, sans-serif;
+}
+
+/* 1. Global Canvas & Typography */
+body, html {
+    background-color: var(--mc-cream) !important;
+    color: var(--mc-ink) !important;
+    font-family: var(--mc-font-family) !important;
+    font-weight: 450 !important; /* Mastercard signature weight */
+    letter-spacing: -0.15px !important;
+    line-height: 1.4 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography elements */
+p, li, span:not([class*="zmdi"]):not([class*="fa"]):not([class*="icon"]):not([class*="flaticon"]), a:not([class*="zmdi"]):not([class*="fa"]):not([class*="icon"]):not([class*="flaticon"]), label, input, textarea, select {
+    font-family: var(--mc-font-family) !important;
+}
+
+/* Remove default blue/white section backgrounds */
+section, .section, .bg-light, .bg-white, .bg-primary, .primary-bg, [style*="background-color:"] {
+    background-color: transparent !important;
+}
+
+/* Base structural layout backgrounds */
+section {
+    background-color: var(--mc-cream) !important;
+    border: none !important;
+    padding: 100px 0 !important;
+}
+
+/* 2. Headings (MarkForMC Hierarchy) */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: var(--mc-font-family) !important;
+    color: var(--mc-ink) !important;
+    font-weight: 500 !important;
+}
+
+h1, .h1 {
+    font-size: 64px !important;
+    line-height: 1 !important;
+    letter-spacing: -1.28px !important;
+}
+
+h2, .h2 {
+    font-size: 36px !important;
+    line-height: 44px !important;
+    letter-spacing: -0.72px !important;
+}
+
+h3, .h3, .card-title {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.48px !important;
+}
+
+/* 3. Navigation (Floating White Pill) */
+.nav-container {
+    background-color: transparent !important;
+    padding: 0 !important;
+    height: auto !important;
+}
+
+nav#menu1.bar.pos-fixed {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    border-radius: 999px !important;
+    margin: 24px auto !important;
+    max-width: 1200px !important;
+    width: calc(100% - 48px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 8px 32px !important;
+    box-shadow: 0px 4px 24px 0px rgba(20, 20, 19, 0.04) !important;
+    border: none !important;
+    top: 0 !important;
+    transform: none !important;
+    transition: all 0.3s ease !important;
+}
+
+nav#menu1 .logo {
+    max-height: 28px !important;
+    transition: transform 0.2s ease;
+}
+
+nav#menu1 .logo:hover {
+    transform: scale(1.03);
+}
+
+nav#menu1 .menu-horizontal {
+    margin-top: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    height: 100%;
+}
+
+nav#menu1 .menu-horizontal > li {
+    padding: 0 16px !important;
+}
+
+nav#menu1 .menu-horizontal a,
+nav#menu1 .menu-horizontal span {
+    color: var(--mc-ink) !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    letter-spacing: -0.3px !important;
+    text-transform: none !important;
+    opacity: 0.85;
+    transition: opacity 0.2s ease !important;
+}
+
+nav#menu1 .menu-horizontal a:hover {
+    opacity: 1 !important;
+}
+
+/* Navigation buttons (Login/Register) */
+nav#menu1 .bar__module {
+    margin-left: 12px !important;
+    display: inline-flex !important;
+    align-items: center;
+}
+
+nav#menu1 .bar__module .btn {
+    border-radius: 20px !important;
+    padding: 6px 20px !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.28px !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+    display: inline-block;
+    height: auto;
+    line-height: normal;
+    margin: 0 4px !important;
+}
+
+/* Secondary outline CTA in Nav */
+nav#menu1 .bar__module a.btn:not(.btn--primary) {
+    background-color: var(--mc-white) !important;
+    color: var(--mc-ink) !important;
+    border: 1.5px solid var(--mc-ink) !important;
+}
+
+nav#menu1 .bar__module a.btn:not(.btn--primary):hover {
+    background-color: #E8E2DA !important;
+}
+
+/* Primary solid CTA in Nav */
+nav#menu1 .bar__module a.btn.btn--primary {
+    background-color: var(--mc-ink) !important;
+    color: var(--mc-cream) !important;
+    border: 1.5px solid var(--mc-ink) !important;
+}
+
+nav#menu1 .bar__module a.btn.btn--primary:hover {
+    background-color: var(--mc-charcoal) !important;
+    color: var(--mc-white) !important;
+}
+
+/* Language selector button in nav */
+.bootstrap-select.language-switcher {
+    width: 100px !important;
+    margin-right: 12px;
+}
+
+.bootstrap-select.language-switcher button.btn-light {
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--mc-ink) !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.3px !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    padding: 6px 12px !important;
+}
+
+/* 4. Hero Section (Stadium Frame) */
+#header-section {
+    background-color: var(--mc-ink) !important;
+    background-image: none !important;
+    border-radius: 40px !important;
+    margin: 110px auto 40px !important;
+    max-width: 95% !important;
+    padding: 96px 80px !important;
+    box-shadow: none !important;
+    position: relative;
+    overflow: hidden;
+}
+
+#header-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: transparent !important; /* remove dynamic dark overlay if preset */
+}
+
+#header-section h1 {
+    color: var(--mc-white) !important;
+    font-size: 64px !important;
+    line-height: 1 !important;
+    letter-spacing: -1.28px !important;
+    margin-bottom: 24px !important;
+}
+
+#header-section p.lead {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.36px !important;
+    margin-bottom: 40px !important;
+    font-weight: 450 !important;
+}
+
+#header-section a.btn {
+    background-color: var(--mc-white) !important;
+    color: var(--mc-ink) !important;
+    border: 1.5px solid var(--mc-white) !important;
+    border-radius: 20px !important;
+    padding: 10px 28px !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    letter-spacing: -0.3px !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    margin-right: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+#header-section a.btn:hover {
+    background-color: #E8E2DA !important;
+    color: var(--mc-ink) !important;
+    border-color: #E8E2DA !important;
+}
+
+#header-section img {
+    border-radius: 40px !important;
+    box-shadow: 0px 32px 64px 0px rgba(0,0,0,0.3) !important;
+}
+
+/* 5. Features Section & Circular masking with Satellite CTA */
+#features {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 0 0 !important;
+}
+
+/* Background orbital lines */
+#features::before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: -10%;
+    width: 60%;
+    height: 600px;
+    border: 1px solid var(--mc-light-signal-orange);
+    border-radius: 50%;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#features::after {
+    content: "";
+    position: absolute;
+    bottom: 20%;
+    right: -10%;
+    width: 50%;
+    height: 700px;
+    border: 1px solid var(--mc-light-signal-orange);
+    border-radius: 50%;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Image features alternating backgrounds */
+section.feature-large {
+    z-index: 2;
+    position: relative;
+    padding: 80px 0 !important;
+}
+
+section.feature-large:nth-of-type(even) {
+    background-color: var(--mc-lifted-cream) !important;
+}
+
+section.feature-large:nth-of-type(odd) {
+    background-color: var(--mc-cream) !important;
+}
+
+/* Rounded Portrait Masking for SaaS UI */
+section.feature-large img {
+    border-radius: 24px !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    box-shadow: 0px 24px 48px 0px rgba(20,20,19,0.12) !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    transition: all 0.3s ease !important;
+    display: block;
+    margin: 0 auto;
+}
+
+section.feature-large:hover img {
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: 0px 32px 64px 0px rgba(20,20,19,0.18) !important;
+}
+
+/* Text alignment & layout inside features */
+.switchable__text {
+    padding: 24px 0;
+}
+
+.switchable__text h2 {
+    font-size: 36px !important;
+    line-height: 44px !important;
+    letter-spacing: -0.72px !important;
+    margin-bottom: 16px !important;
+}
+
+.switchable__text p.lead {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    color: var(--mc-slate-gray) !important;
+    font-weight: 450 !important;
+}
+
+/* Icon features grid list cards */
+section.text-center:has(.text-block.boxed) {
+    background-color: var(--mc-cream) !important;
+    padding: 100px 0 !important;
+}
+
+.text-block.boxed {
+    background-color: var(--mc-white) !important;
+    border: none !important;
+    border-radius: 40px !important;
+    padding: 48px 32px !important;
+    box-shadow: 0px 24px 48px 0px rgba(20,20,19,0.06) !important;
+    margin-bottom: 30px !important;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.text-block.boxed:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 32px 64px 0px rgba(20,20,19,0.1) !important;
+}
+
+.text-block.boxed i.feature-icon {
+    background-color: rgba(243, 115, 56, 0.1) !important;
+    color: var(--mc-signal-orange) !important;
+    width: 64px;
+    height: 64px;
+    border-radius: 50% !important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px !important;
+    margin-bottom: 24px !important;
+    transition: all 0.3s ease;
+}
+
+.text-block.boxed:hover i.feature-icon {
+    background-color: var(--mc-signal-orange) !important;
+    color: var(--mc-white) !important;
+}
+
+.text-block.boxed h5 {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.4px !important;
+    margin-bottom: 12px !important;
+}
+
+.text-block.boxed p {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    color: var(--mc-slate-gray) !important;
+    margin-bottom: 0;
+}
+
+/* 6. Testimonial / Feedback Section */
+section.bg--dark {
+    background-color: var(--mc-ink) !important;
+    color: var(--mc-white) !important;
+    border-radius: 40px !important;
+    margin: 40px auto !important;
+    max-width: 95% !important;
+    padding: 96px 40px !important;
+}
+
+section.bg--dark blockquote {
+    font-size: 28px !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.56px !important;
+    color: var(--mc-white) !important;
+    border: none !important;
+    font-style: normal;
+    margin-bottom: 32px !important;
+}
+
+section.bg--dark h5 {
+    color: var(--mc-light-signal-orange) !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    letter-spacing: 0.56px !important;
+    text-transform: uppercase !important;
+}
+
+.flickity-page-dots .dot {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    opacity: 1 !important;
+}
+
+.flickity-page-dots .dot.is-selected {
+    background-color: var(--mc-light-signal-orange) !important;
+}
+
+/* 7. Pricing Section */
+#pricing {
+    background-color: var(--mc-cream) !important;
+    padding: 100px 0 !important;
+}
+
+/* Package Switch */
+.pricing-section-2 .mb-3 {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: var(--mc-ink) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px !important;
+}
+
+/* Switchery custom styling */
+.switchery {
+    background-color: var(--mc-dust-taupe) !important;
+    border: none !important;
+    height: 28px !important;
+    width: 50px !important;
+    border-radius: 20px !important;
+}
+
+.switchery > small {
+    background-color: var(--mc-white) !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+}
+
+/* Pricing Cards */
+.pricing.pricing-3 {
+    background-color: var(--mc-white) !important;
+    border: none !important;
+    border-radius: 40px !important;
+    padding: 0 !important;
+    box-shadow: 0px 24px 48px 0px rgba(20, 20, 19, 0.06) !important;
+    margin: 0 8px 30px !important;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    transform: none !important;
+    z-index: 1 !important;
+    position: relative !important;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 30px) !important;
+}
+
+.pricing.pricing-3:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0px 32px 64px 0px rgba(20, 20, 19, 0.12) !important;
+    z-index: 2 !important;
+}
+
+.pricing.pricing-3 ul {
+    flex-grow: 1;
+}
+
+.pricing.pricing-3 .pricing__head {
+    padding: 48px 32px !important;
+    border-radius: 0 !important;
+    background-color: var(--mc-white) !important;
+    color: var(--mc-ink) !important;
+    border-bottom: 1px solid var(--mc-cream) !important;
+}
+
+/* Recommended pricing head style */
+.pricing.pricing-3 .pricing__head.bg--primary.background-color {
+    background-color: var(--mc-ink) !important;
+    color: var(--mc-white) !important;
+}
+
+.pricing.pricing-3 .pricing__head.bg--primary.background-color h5,
+.pricing.pricing-3 .pricing__head.bg--primary.background-color .h1,
+.pricing.pricing-3 .pricing__head.bg--primary.background-color p,
+.pricing.pricing-3 .pricing__head.bg--primary.background-color span {
+    color: var(--mc-white) !important;
+}
+
+.pricing.pricing-3 .pricing__head.bg--primary.background-color .label {
+    background-color: var(--mc-light-signal-orange) !important;
+    color: var(--mc-white) !important;
+    border-radius: 20px !important;
+    padding: 4px 12px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    margin-bottom: 16px !important;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+.pricing.pricing-3 h5 {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.4px !important;
+    margin-bottom: 16px !important;
+}
+
+.pricing.pricing-3 .h1 {
+    font-size: 56px !important;
+    font-weight: 500 !important;
+    letter-spacing: -1.12px !important;
+    line-height: 1 !important;
+    margin-bottom: 12px !important;
+}
+
+.pricing.pricing-3 .pricing__dollar {
+    font-size: 28px !important;
+    vertical-align: super;
+    margin-right: 4px;
+}
+
+.pricing.pricing-3 .type--fine-print {
+    font-size: 13px !important;
+    color: var(--mc-slate-gray) !important;
+    margin: 0 !important;
+}
+
+.pricing.pricing-3 .pricing__head.bg--primary.background-color .type--fine-print {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.pricing.pricing-3 ul {
+    padding: 32px !important;
+    margin: 0 !important;
+    list-style: none !important;
+    background-color: var(--mc-white) !important;
+}
+
+.pricing.pricing-3 ul li {
+    padding: 14px 0 !important;
+    border-bottom: 1px solid var(--mc-cream) !important;
+    font-size: 15px !important;
+    color: var(--mc-ink) !important;
+    font-weight: 450 !important;
+}
+
+.pricing.pricing-3 ul li:last-child {
+    border-bottom: none !important;
+}
+
+/* 8. Call to Action Section (Stadium style Ink Black box) */
+section.imagebg[data-gradient-bg] {
+    background: var(--mc-ink) !important;
+    border-radius: 40px !important;
+    margin: 40px auto !important;
+    max-width: 95% !important;
+    padding: 96px 40px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+section.imagebg[data-gradient-bg] canvas {
+    display: none !important; /* Disable canvas gradient scripts */
+}
+
+section.imagebg h2 {
+    color: var(--mc-white) !important;
+    font-size: 40px !important;
+    line-height: 48px !important;
+    letter-spacing: -0.8px !important;
+    margin-bottom: 32px !important;
+}
+
+section.imagebg .btn {
+    background-color: var(--mc-white) !important;
+    border: 1.5px solid var(--mc-white) !important;
+    border-radius: 20px !important;
+    padding: 10px 32px !important;
+    box-shadow: none !important;
+    display: inline-block !important;
+}
+
+section.imagebg .btn,
+section.imagebg .btn span.btn__text {
+    color: var(--mc-ink) !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    letter-spacing: -0.32px !important;
+    text-transform: none !important;
+}
+
+section.imagebg .btn:hover {
+    background-color: #E8E2DA !important;
+    border-color: #E8E2DA !important;
+}
+
+section.imagebg .btn:hover,
+section.imagebg .btn:hover span.btn__text {
+    color: var(--mc-ink) !important;
+}
+
+/* 9. Contact Form */
+#contact {
+    background-color: var(--mc-cream) !important;
+    padding: 100px 0 !important;
+}
+
+#contact p.lead {
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    color: var(--mc-ink) !important;
+    font-weight: 450 !important;
+}
+
+#contact label {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: var(--mc-ink) !important;
+    margin-bottom: 8px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+#contact label.required::after {
+    content: " •" !important;
+    color: var(--mc-signal-orange) !important;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+    background-color: var(--mc-white) !important;
+    border: 1px solid rgba(20, 20, 19, 0.2) !important;
+    border-radius: 999px !important;
+    padding: 12px 24px !important;
+    color: var(--mc-ink) !important;
+    width: 100% !important;
+    font-size: 15px !important;
+    box-shadow: none !important;
+    transition: border-color 0.2s ease !important;
+    margin-bottom: 20px !important;
+}
+
+#contact textarea {
+    border-radius: 24px !important; /* Textareas cannot be full pill */
+    padding: 18px 24px !important;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+    border-color: var(--mc-ink) !important;
+    outline: none !important;
+}
+
+#contact .btn {
+    background-color: var(--mc-ink) !important;
+    color: var(--mc-cream) !important;
+    border: 1.5px solid var(--mc-ink) !important;
+    border-radius: 20px !important;
+    padding: 10px 28px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    letter-spacing: -0.32px !important;
+    text-transform: none !important;
+    display: inline-block !important;
+    text-align: center;
+    width: auto !important;
+}
+
+#contact .btn:hover {
+    background-color: var(--mc-charcoal) !important;
+    color: var(--mc-white) !important;
+}
+
+/* 10. Footer (Dark Ink Black) */
+.footer {
+    background-color: var(--mc-ink) !important;
+    color: var(--mc-white) !important;
+    padding: 80px 0 40px !important;
+    margin-top: 80px !important;
+    border-radius: 0 !important;
+}
+
+.footer .container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.footer__widgets {
+    padding: 40px 0 !important;
+}
+
+.footer h5.widget-title {
+    color: var(--mc-white) !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.56px !important;
+    text-transform: uppercase !important;
+    margin-bottom: 24px !important;
+}
+
+.footer a,
+.footer p,
+.footer li,
+.footer span,
+.footer .copyright {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 450 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    line-height: 1.6 !important;
+}
+
+.footer a:hover {
+    color: var(--mc-white) !important;
+}
+
+.footer .navbar-nav {
+    flex-direction: column !important;
+}
+
+.footer .navbar-nav li {
+    padding: 0 !important;
+    margin-bottom: 12px !important;
+}
+
+.footer .navbar-nav li a {
+    padding: 0 !important;
+}
+
+.footer .socials a {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--mc-white) !important;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 8px;
+    font-size: 18px;
+    margin-right: 12px;
+    display: inline-block;
+    transition: all 0.2s ease !important;
+}
+
+.footer .socials a:hover {
+    background: var(--mc-white) !important;
+    color: var(--mc-ink) !important;
+}
+
+.footer .f-contact-detail {
+    margin-top: 16px !important;
+    position: relative;
+    padding-left: 28px !important;
+}
+
+.footer .f-contact-detail i {
+    left: 0;
+    top: 2px;
+    position: absolute;
+    color: var(--mc-light-signal-orange) !important;
+    font-size: 18px !important;
+}
+
+.footer__bottom {
+    padding: 24px 0 0 !important;
+    border-top: none !important;
+}
+
+/* 11. Responsive Adjustments */
+@media (max-width: 991px) {
+    #header-section {
+        padding: 60px 40px !important;
+    }
+    
+    #header-section h1 {
+        font-size: 48px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Floating headers layout updates */
+    nav#menu1.bar.pos-fixed {
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        padding: 12px 20px !important;
+    }
+    
+    #header-section {
+        border-radius: 0 0 40px 40px !important;
+        margin: 70px 0 20px !important;
+        max-width: 100% !important;
+        padding: 48px 24px !important;
+    }
+    
+    #header-section h1 {
+        font-size: 38px !important;
+    }
+    
+    h1, .h1 { font-size: 38px !important; }
+    h2, .h2 { font-size: 28px !important; }
+    
+    section {
+        padding: 60px 0 !important;
+    }
+    
+    section.feature-large img {
+        width: 240px !important;
+        height: 240px !important;
+    }
+    
+    section.feature-large .col-md-6::after {
+        bottom: 10px;
+        right: calc(50% - 120px - 10px);
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    
+    section.bg--dark {
+        border-radius: 0 !important;
+        margin: 20px 0 !important;
+        max-width: 100% !important;
+        padding: 60px 20px !important;
+    }
+    
+    section.bg--dark blockquote {
+        font-size: 22px !important;
+    }
+    
+    section.imagebg[data-gradient-bg] {
+        border-radius: 0 !important;
+        margin: 20px 0 !important;
+        max-width: 100% !important;
+        padding: 60px 20px !important;
+    }
 }

@@ -59,6 +59,12 @@ class SuperAdminFrontCmsController extends SuperAdminBaseController
             $headerData->register_background = Files::upload($request->register_background_image,'register-background-image');
         }
 
+        if ($request->hasFile('favicon')) {
+            $globalSetting = \App\GlobalSetting::first();
+            $globalSetting->favicon = Files::upload($request->favicon, 'favicon');
+            $globalSetting->save();
+        }
+
         if ($request->remove_login_background == 'yes') {
             $headerData->login_background = null;
         }

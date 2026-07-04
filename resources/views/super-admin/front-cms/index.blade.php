@@ -35,6 +35,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="input-favicon">Favicon</label>
+                        <div class="card">
+                            <div class="card-body">
+                                <input type="file" id="input-favicon" name="favicon" class="dropify" data-default-file="{{ $global->favicon_url }}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>@lang('modules.frontCms.loginBackroundImage')</label>
                         <div class="card">
                             <div class="card-body">

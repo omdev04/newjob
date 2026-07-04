@@ -1,56 +1,161 @@
-.topbar-brand img{
+/*======================================================
+ * MASTERCARD DESIGN SYSTEM - CAREER PAGE OVERRIDE
+ *======================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;500;700&display=swap');
+
+:root {
+    --mc-cream: #F3F0EE;
+    --mc-lifted-cream: #FCFBFA;
+    --mc-white: #FFFFFF;
+    --mc-ink: #141413;
+    --mc-charcoal: #262627;
+    --mc-signal-orange: #CF4500;
+    --mc-light-signal-orange: #F37338;
+    --mc-font-family: 'Sofia Sans', 'Inter', Arial, sans-serif;
+}
+
+body, html {
+    background-color: var(--mc-cream) !important;
+    color: var(--mc-ink) !important;
+    font-family: var(--mc-font-family) !important;
+    font-weight: 450 !important;
+    letter-spacing: -0.15px !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
+    font-family: var(--mc-font-family) !important;
+    color: var(--mc-ink) !important;
+    font-weight: 500 !important;
+}
+
+.topbar-brand img {
     max-height: 30px;
 }
 
-.header{
-    padding: 200px 100px;
+.header {
+    background-color: var(--mc-ink) !important;
+    color: var(--mc-white) !important;
+    border-radius: 40px !important;
+    margin: 30px auto !important;
+    max-width: 95% !important;
+    padding: 100px 60px !important;
+}
+.header h1, .header p, .header span, .header a {
+    color: var(--mc-white) !important;
 }
 
-.card{
-    border-radius: 4px ;
+/* Floating White Pill Navbar on career portal */
+header.topbar, nav.topbar {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 999px !important;
+    margin: 24px auto !important;
+    max-width: 1200px !important;
+    padding: 12px 40px !important;
+    box-shadow: 0px 4px 24px 0px rgba(20, 20, 19, 0.04) !important;
+    border: none !important;
+    position: relative !important;
+}
+
+.card {
+    background-color: var(--mc-white) !important;
+    border: none !important;
+    border-radius: 40px !important;
+    padding: 32px !important;
+    box-shadow: 0px 24px 48px 0px rgba(20, 20, 19, 0.06) !important;
+    margin-bottom: 24px !important;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 32px 64px 0px rgba(20, 20, 19, 0.1) !important;
 }
 
 .job-opening-card:hover .card {
-    background: var(--main-color);
-    border-color: var(--main-color);
+    background: var(--mc-ink) !important;
+    border-color: var(--mc-ink) !important;
 }
 
-
-.job-opening-card:hover .card h5, .job-opening-card:hover .card .text-info {
-    color: #fff !important;
+.job-opening-card:hover .card h5, 
+.job-opening-card:hover .card p, 
+.job-opening-card:hover .card span,
+.job-opening-card:hover .card .text-info,
+.job-opening-card:hover .card i {
+    color: var(--mc-white) !important;
 }
 
 .job-opening-card .card .text-info {
-    color: var(--main-color) !important;
+    color: var(--mc-light-signal-orange) !important;
+    font-weight: 700 !important;
 }
 
-.job-filters .btn-outline.btn-info.active, .job-filters .btn-outline.btn-info:hover {
-    background: var(--main-color);
-    border-color: var(--main-color);
-    color: #ffffff;
+/* Job opening filters */
+.job-filters .btn-outline {
+    border-radius: 20px !important;
+    padding: 6px 20px !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    text-transform: none !important;
 }
 
-.job-filters .btn-outline.btn-info{
-    color: var(--main-color);
-    border-color: var(--main-color);
+.job-filters .btn-outline.btn-info {
+    color: var(--mc-ink) !important;
+    border-color: var(--mc-ink) !important;
 }
 
-.topbar-right .btn-primary{
-    background: var(--main-color);
-    border-color: var(--main-color);
+.job-filters .btn-outline.btn-info.active, 
+.job-filters .btn-outline.btn-info:hover {
+    background: var(--mc-ink) !important;
+    border-color: var(--mc-ink) !important;
+    color: var(--mc-cream) !important;
 }
 
-.theme-color{
-    color: var(--main-color) !important;
+/* Inputs and forms on career portal */
+input.form-control, select.form-control, textarea.form-control, .select-file {
+    background-color: var(--mc-white) !important;
+    border: 1px solid rgba(20, 20, 19, 0.2) !important;
+    border-radius: 999px !important;
+    padding: 12px 24px !important;
+    color: var(--mc-ink) !important;
 }
 
-.theme-background{
-    background: var(--main-color) !important;
+textarea.form-control {
+    border-radius: 24px !important;
 }
 
-.btn.theme-background, .btn.theme-background:hover{
-    background: var(--main-color) !important;
-    border-color: var(--main-color) !important;
+/* Buttons */
+.btn-primary, .btn-solid, button[type="submit"] {
+    background-color: var(--mc-ink) !important;
+    color: var(--mc-cream) !important;
+    border: 1.5px solid var(--mc-ink) !important;
+    border-radius: 20px !important;
+    padding: 8px 28px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover, .btn-solid:hover, button[type="submit"]:hover {
+    background-color: var(--mc-charcoal) !important;
+    color: var(--mc-white) !important;
+}
+
+.theme-color {
+    color: var(--mc-light-signal-orange) !important;
+}
+
+.theme-background {
+    background: var(--mc-ink) !important;
+}
+
+.btn.theme-background, .btn.theme-background:hover {
+    background: var(--mc-ink) !important;
+    border-color: var(--mc-ink) !important;
+    color: var(--mc-cream) !important;
 }
 
 .sidebar{
