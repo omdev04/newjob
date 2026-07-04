@@ -254,9 +254,10 @@
                 success: function (response) {
                     if(response.status == 'success'){
                         var successMsg = '<div class="alert alert-success my-100" role="alert">' +
-                            response.msg + ' <a class="" href="{{ route('jobs.jobOpenings', $job->company->career_page_link) }}">{{ __("app.view").' '.__("modules.front.jobOpenings") }} <i class="fa fa-arrow-right"></i></a>'
+                            response.msg + ' <a class="" href="{{ route('jobs.jobOpenings', $job->company->career_page_link) }}">{{ __("app.view").' '.__("modules.front.jobOpenings") }} <i class="fa fa-arrow-right"></i></a>' +
                             '</div>';
                         $('.main-content .container').html(successMsg);
+                        $("html, body").animate({scrollTop: $('.main-content').offset().top - 150}, 200);
                     }
                 },
                 error: function (response) {
