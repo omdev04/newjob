@@ -267,56 +267,62 @@
         });
 
         function handleFails(response) {
-            if (typeof response.responseJSON.errors != "undefined") {
+            if (typeof response.responseJSON !== "undefined" && typeof response.responseJSON.errors !== "undefined") {
                 var keys = Object.keys(response.responseJSON.errors);
 
                 $('#createForm').find(".has-error").find(".help-block").remove();
                 $('#createForm').find(".has-error").removeClass("has-error");
 
-                    for (var i = 0; i < keys.length; i++) {
-                        // Escape dot that comes with error in array fields
-                        var key = keys[i].replace(".", '\\.');
-                        var formarray = keys[i];
+                for (var i = 0; i < keys.length; i++) {
+                    // Escape dot that comes with error in array fields
+                    var key = keys[i].replace(".", '\\.');
+                    var formarray = keys[i];
 
-                        // If the response has form array
-                        if(formarray.indexOf('.') >0){
-                            var array = formarray.split('.');
-                            response.responseJSON.errors[keys[i]] = response.responseJSON.errors[keys[i]];
-                            key = array[0]+'['+array[1]+']';
-                        }
-
-                        var ele = $('#createForm').find("[name='" + key + "']");
-
-                        var grp = ele.closest(".form-group");
-                        $(grp).find(".help-block").remove();
-
-                        //check if wysihtml5 editor exist
-                        var wys = $(grp).find(".wysihtml5-toolbar").length;
-
-                        if(wys > 0){
-                            var helpBlockContainer = $(grp);
-                        }
-                        else{
-                            var helpBlockContainer = $(grp).find("div:first");
-                        }
-                        if($(ele).is(':radio')){
-                            helpBlockContainer = $(grp);
-                        }
-
-                        if (helpBlockContainer.length == 0) {
-                            helpBlockContainer = $(grp);
-                        }
-
-                        helpBlockContainer.append('<div class="help-block">' + response.responseJSON.errors[keys[i]] + '</div>');
-                        $(grp).addClass("has-error");
+                    // If the response has form array
+                    if(formarray.indexOf('.') >0){
+                        var array = formarray.split('.');
+                        response.responseJSON.errors[keys[i]] = response.responseJSON.errors[keys[i]];
+                        key = array[0]+'['+array[1]+']';
                     }
 
-                    if (keys.length > 0) {
-                        var element = $("[name='" + keys[0] + "']");
-                        if (element.length > 0) {
-                            $("html, body").animate({scrollTop: element.offset().top - 150}, 200);
-                        }
+                    var ele = $('#createForm').find("[name='" + key + "']");
+
+                    var grp = ele.closest(".form-group");
+                    $(grp).find(".help-block").remove();
+
+                    //check if wysihtml5 editor exist
+                    var wys = $(grp).find(".wysihtml5-toolbar").length;
+
+                    if(wys > 0){
+                        var helpBlockContainer = $(grp);
                     }
+                    else{
+                        var helpBlockContainer = $(grp).find("div:first");
+                    }
+                    if($(ele).is(':radio')){
+                        helpBlockContainer = $(grp);
+                    }
+
+                    if (helpBlockContainer.length == 0) {
+                        helpBlockContainer = $(grp);
+                    }
+
+                    helpBlockContainer.append('<div class="help-block">' + response.responseJSON.errors[keys[i]] + '</div>');
+                    $(grp).addClass("has-error");
+                }
+
+                if (keys.length > 0) {
+                    var element = $("[name='" + keys[0] + "']");
+                    if (element.length > 0) {
+                        $("html, body").animate({scrollTop: element.offset().top - 150}, 200);
+                    }
+                }
+            } else {
+                var msg = "A server side error occurred. Please try again after sometime.";
+                if (response.statusText === "timeout") {
+                    msg = "Connection timed out! Please check your internet connection";
+                }
+                showResponseMessage(msg, "error");
             }
         }
     </script>

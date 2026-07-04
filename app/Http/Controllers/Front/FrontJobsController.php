@@ -293,9 +293,12 @@ class FrontJobsController extends FrontBaseController
         $company = company::find($jobApplication->company_id);
         $jobApplication->company_name = $company->company_name;
         
-       Notification::send($users, new NewJobApplication($jobApplication, $linkedin));
-        
-        Mail::send(new ReceivedApplication($jobApplication));
+        try {
+            Notification::send($users, new NewJobApplication($jobApplication, $linkedin));
+            Mail::send(new ReceivedApplication($jobApplication));
+        } catch (\Exception $e) {
+            // Log the exception or ignore if SMTP is not configured
+        }
 
         return Reply::dataOnly(['status' => 'success', 'msg' => __('modules.front.applySuccessMsg')]);
     }
